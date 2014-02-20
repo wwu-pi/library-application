@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/resources/master.xhtml">
+	<ui:define name="metadata">
+	<f:metadata>
+		<f:viewParam name="id" value="#{bookPage.bookId}" />
+		<f:event type="preRenderView" listener="#{bookPage.ensureInitialized}" />
+	</f:metadata>
+	</ui:define>
+	<ui:define name="title">Book #{bookPage.book.title}</ui:define>
+	<ui:define name="content">
+	<div class="details"><h2>#{bookPage.book.title}</h2>
+	<h:panelGrid columns="2" columnClasses="label, value" styleClass="details-table">
+		ID
+		<h:outputText value="#{bookPage.book.id}" />
+		Author
+		<h:outputText value="#{bookPage.book.author}" />
+		ISBN
+		<h:outputText value="#{bookPage.book.isbn}" />
+	</h:panelGrid></div>
+	<div><h3>Copies</h3>
+	<h:dataTable value="#{bookPage.copies}" var="cur"
+		rendered="#{not empty bookPage.copies}"
+		styleClass="data-table" 
+		columnClasses="data-cell,data-cell"
+		headerClass="data-cell header-cell">
+		<h:column>
+			<f:facet name="header">Inventory No.</f:facet>
+			#{cur.inventoryNo}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Availability</f:facet>
+			<h:outputText rendered="#{cur.loan == null}" value="Available"/>
+			<h:panelGroup rendered="#{cur.loan != null}">Borrowed by
+				<h:link outcome="/user.xhtml" value="#{cur.loan.user.name}">
+					<f:param name="id" value="#{cur.loan.user.uid}" />
+				</h:link>
+			</h:panelGroup>
+		</h:column>
+	</h:dataTable>
+	<h:form styleClass="form-footer" style="margin-top: 0.5em;">
+		<h:commandButton value="New copy" action="#{bookPage.addCopy}" />
+	</h:form></div>
+	</ui:define>
+</ui:composition>
+</html>
