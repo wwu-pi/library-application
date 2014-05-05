@@ -16,7 +16,7 @@ Authors:
 
 Requirements:
 * WildFly 8
-* Eclipse 3.7 + JBoss Tools 3.7
+* Eclipse 4.3.x + JBoss Tools 4.1.x
 * see [preconditions](http://wwu-pi.github.io/tutorials/lectures/eai/020_tutorial_jboss_project.html#precond)
 
 [Instructions to import the applicaton](http://wwu-pi.github.io/tutorials/lectures/eai/020_tutorial_jboss_project.html#import)
