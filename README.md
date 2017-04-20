@@ -13,10 +13,11 @@ Authors:
  * Herbert Kuchen
  * Claus Alexander Usener
  * Jan Ernsting
+ * Christoph Rieger
 
-Requirements:
-* WildFly 8
-* Eclipse 4.4.x + JBoss Tools 4.2.x
-* see [preconditions](http://wwu-pi.github.io/tutorials/lectures/eai/020_tutorial_jboss_project.html#precond)
+Requirements/ Tested on:
+* WildFly 10
+* Eclipse 4.6.x Neon + JBoss Tools 4.4.x
+* Docker (for deployment)
 
-[Instructions to import the applicaton](http://wwu-pi.github.io/tutorials/lectures/eai/020_tutorial_jboss_project.html#import)
+[Instructions to import the applicaton](https://wwu-pi.github.io/tutorials/lectures/acse/018_tutorial_sample_app.html)
