@@ -1,3 +1,7 @@
-# build results
-
-build/
+.gradle
+bin
+build
+*.jar
+.settings
+.classpath
+.project

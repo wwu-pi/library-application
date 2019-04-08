@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/resources/master.xhtml">
+	<ui:define name="metadata">
+	<f:metadata>
+		<f:viewParam name="id" value="#{userLoanPage.userId}" />
+		<f:event type="preRenderView" listener="#{userLoanPage.ensureInitialized}" />
+	</f:metadata>
+	</ui:define>
+	<ui:define name="title">User #{userLoanPage.user.name}</ui:define>
+	<ui:define name="content">
+	<div class="details"><h2>#{userLoanPage.user.name}</h2>
+	<h:panelGrid columns="2" columnClasses="label, value" styleClass="details-table">
+		User ID
+		<h:outputText value="#{userLoanPage.user.uid}" />
+		Address
+		<h:outputText value="#{userLoanPage.user.address}" />
+	</h:panelGrid></div>
+	<div><h3>Current Loans</h3>
+	<h:dataTable value="#{userLoanPage.loans}" var="cur"
+		rendered="#{not empty userLoanPage.loans}"
+		styleClass="data-table" 
+		columnClasses="data-cell,data-cell,data-cell,data-cell"
+		headerClass="data-cell header-cell">
+		<h:column>
+			<f:facet name="header">Book Title</f:facet>
+			<h:link value="#{cur.copy.medium.title}" outcome="/book.xhtml">
+				<f:param name="id" value="#{cur.copy.medium.id}" />
+			</h:link>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Inventory No.</f:facet>
+			#{cur.copy.inventoryNo}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Borrowed since</f:facet>
+			<h:outputText value="#{cur.date}">
+				<f:convertDateTime pattern="yyyy-MM-dd HH:mm" timeZone="Europe/Berlin"/>
+			</h:outputText>
+		</h:column>
+		<h:column>
+			<h:form><h:commandButton value="Return book" action="#{userLoanPage.returnLoan(cur)}" /></h:form>
+		</h:column>
+	</h:dataTable></div>
+	<div><h3>New Loan</h3>
+	<h:form><h:panelGrid columns="2" columnClasses="form-label,form-input" footerClass="form-footer">
+		<h:outputLabel value="Inventory No." for="invNo"/>
+		<h:inputText value="#{userLoanPage.copyToLoanInvNo}" id="invNo" size="6">
+			<f:ajax render="copyToLoan borrowBtn" />
+		</h:inputText>
+		<h:outputLabel value="Details" for="copyToLoan"/>
+		<h:outputText id="copyToLoan" value="#{userLoanPage.copyToLoanDetail}" styleClass="#{userLoanPage.loanPossible ? 'detail' : 'error'}" />
+		<f:facet name="footer"><h:commandButton id="borrowBtn" value="Borrow" 
+			action="#{userLoanPage.loan}" disabled="#{not userLoanPage.loanPossible}" /></f:facet>
+	</h:panelGrid></h:form></div>
+	</ui:define>
+</ui:composition>
+</html>

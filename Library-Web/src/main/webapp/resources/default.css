@@ -1,0 +1,100 @@
+h1, h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h3 {
+	margin-top: 1em;
+	margin-bottom: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#header {
+	padding-left: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin-bottom: 0.5em;
+	background: #eeeeee;
+}
+
+#title {
+	vertical-align: 20px;
+}
+
+#navigation {
+	float: left;
+	margin-bottom: 1em;
+}
+
+#navigation ul {
+	list-style: none;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#content {
+	float: left;
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
+
+#footer {
+	clear: both;
+	border-top: 1px solid #CCCCCC;
+	font-size: small;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+.success {
+	color: green;
+	font-weight: bold;
+}
+
+.form-footer {
+	padding-left: 5em;
+}
+
+.data-table {
+	border-collapse: collapse;
+}
+
+.header-cell {
+	border-bottom: 1px solid black;
+	vertical-align: bottom;
+}
+
+.data-cell {
+	border-left: 1px solid black;
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+.data-cell:first-child {
+	border-left: none;
+}
+
+.footer-cell {
+	padding-top: 0.5em;
+	text-align: center;
+}
+
+.label {
+	font-weight: bold;
+	padding-right: 1em;
+}
+
+.details-table .label {
+	border-bottom: 1px solid black;
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'Library'
+include 'Library'
+include 'Library-EJB'
+include 'Library-Persistence'
+include 'Library-Web'

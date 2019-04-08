@@ -1,0 +1,5 @@
+apply plugin: 'ear'
+
+dependencies {
+  deploy project(path: ':Library-Web', configuration: 'archives')
+}

@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    image: wwupi/acse-library
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    volumes:
+      - ./Library/build/libs/:/opt/jboss/wildfly/standalone/deployments/

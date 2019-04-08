@@ -1,0 +1,4 @@
+dependencies {
+  compileOnly group: 'javax', name: 'javaee-api', version: '8.0'
+  compile project(':Library-Persistence')
+}
